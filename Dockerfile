@@ -1,4 +1,4 @@
-FROM golang:1.19.3-alpine
+FROM golang:1.20.1-alpine
 
 RUN mkdir -p /usr/share/man/man1 && \
   apk add --update --upgrade \
