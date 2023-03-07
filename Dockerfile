@@ -7,7 +7,8 @@ RUN mkdir -p /usr/share/man/man1 && \
   zsh \
   curl \
   wget \
-  procps
+  procps \
+  openssh-client
 
 
 WORKDIR /home/app
