@@ -8,14 +8,18 @@ RUN mkdir -p /usr/share/man/man1 && \
   curl \
   wget \
   procps \
-  openssh-client
+  openssh-client \ 
+  build-base 
 
+RUN apk add --update --upgrade --no-cache gcc
 
 WORKDIR /home/app
 
 RUN go install -v golang.org/x/tools/gopls@latest
 RUN go install -v github.com/go-delve/delve/cmd/dlv@latest 
 RUN go install -v honnef.co/go/tools/cmd/staticcheck@latest
+
+ENV CGO_ENABLED=1
 
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.2/zsh-in-docker.sh)" -- \
   -t https://github.com/romkatv/powerlevel10k \
